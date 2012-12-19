@@ -11,16 +11,16 @@ package detectordeadlock;
 
 public class Transaction {
  
-    enum functions {
+    enum FUNCTIONS {
         LOCK_S , LOCK_X, READ, WRITE,
         UNLOCK;
     }
     
     private char data;
-    private functions function;
+    private FUNCTIONS function;
     
     //default constructor
-    public Transaction(char data, functions function)
+    public Transaction(char data, FUNCTIONS function)
     {        
         this.data = data;
         this.function = function;

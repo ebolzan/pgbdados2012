@@ -18,7 +18,7 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         
-        Transaction n = new Transaction('a', Transaction.functions.LOCK_S);
+        Transaction n = new Transaction('a', Transaction.FUNCTIONS.LOCK_S);
         
         this.cont = 0;
         initComponents();
