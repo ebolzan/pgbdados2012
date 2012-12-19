@@ -20,7 +20,7 @@ public class NewJFrame extends javax.swing.JFrame {
         
         Transaction n = new Transaction('a', Transaction.FUNCTIONS.LOCK_S);
         
-        this.cont = 0;
+        this.cont = 0;  
         initComponents();
     }
 
