@@ -11,6 +11,7 @@ package detectordeadlock;
 
 public class Transaction {
  
+    //five states which can be each input user data
     enum FUNCTIONS {
         LOCK_S , LOCK_X, READ, WRITE,
         UNLOCK;
@@ -27,4 +28,22 @@ public class Transaction {
         System.out.print(function);
         
     }
+
+    public char getData() {
+        return data;
+    }
+
+    public void setData(char data) {
+        this.data = data;
+    }
+
+    public FUNCTIONS getFunction() {
+        return function;
+    }
+
+    public void setFunction(FUNCTIONS function) {
+        this.function = function;
+    }
+    
+    
 }
