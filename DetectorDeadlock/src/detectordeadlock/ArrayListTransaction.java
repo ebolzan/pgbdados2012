@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author evandro, GABRIE, LUCAS
+ * @author evandro, GABRIE, LUCASnbn
  */
 public class ArrayListTransaction{
     
