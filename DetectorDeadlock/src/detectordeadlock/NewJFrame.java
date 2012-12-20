@@ -13,12 +13,15 @@ import javax.swing.JOptionPane;
 public class NewJFrame extends javax.swing.JFrame {
 
     private int cont;
+    ArrayListTransaction arraylist;
+    
     /**
      * Creates new form NewJFrame
      */
     public NewJFrame() {
+        arraylist = new ArrayListTransaction();
         
-        Transaction n = new Transaction('a', Transaction.FUNCTIONS.LOCK_S);
+        Transaction n = new Transaction(1, "a", Transaction.FUNCTIONS.LOCK_S);
         
         this.cont = 0;  
         initComponents();
@@ -123,8 +126,35 @@ public class NewJFrame extends javax.swing.JFrame {
             if(resposta == 0)
             {
                 //continuar a inserção                
+                int id = jComboBox1.getSelectedIndex() + 1;
                 
+                String c = jComboBox3.getSelectedItem().toString();
                 
+                int function = jComboBox2.getSelectedIndex();
+                
+                Transaction t = null;
+                
+                switch(function)
+                {
+                    case 0 : t = new Transaction(id, c, Transaction.FUNCTIONS.LOCK_S);
+                        break;
+                    
+                    case 1 : t = new Transaction(id, c, Transaction.FUNCTIONS.LOCK_X);
+                        break;     
+                       
+                   case 2 : t = new Transaction(id, c, Transaction.FUNCTIONS.READ);
+                        break;
+                       
+                   case 3 : t = new Transaction(id, c, Transaction.FUNCTIONS.WRITE);
+                        break;
+                       
+                    case 4 : t = new Transaction(id, c, Transaction.FUNCTIONS.UNLOCK);
+                        break;                                                  
+                }                
+                
+                arraylist.insert(t);
+                
+                System.out.println("id "+id+1+" dado "+c);                                               
             }
             else
             {
