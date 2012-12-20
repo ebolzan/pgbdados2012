@@ -15,11 +15,10 @@ public class ArrayListTransaction{
     ArrayList<Transaction> arraylist;
 
     public ArrayListTransaction() {
-        arraylist = new ArrayList();
-        
-        
+        arraylist = new ArrayList();                
     }
     
+    //insert new transaction
     public void insert(Transaction t)
     {
         arraylist.add(t);        
@@ -32,9 +31,6 @@ public class ArrayListTransaction{
             throw new  IndexOutOfBoundsException("Index is out of bounds");
             
         return arraylist.get(index);
-        
-    }
-    
-    
+    }           
     
 }
