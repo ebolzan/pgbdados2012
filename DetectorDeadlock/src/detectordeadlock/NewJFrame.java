@@ -128,7 +128,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 //continuar a inserção                
                 int id = jComboBox1.getSelectedIndex() + 1;
                 
-                String c = jComboBox3.getSelectedItem().toString();
+                String c = jComboBox3.getSelectedItem().toString(); 
                 
                 int function = jComboBox2.getSelectedIndex();
                 
