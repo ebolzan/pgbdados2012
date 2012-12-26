@@ -1,6 +1,5 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * this file have method main that call newframe.java, user interface
  */
 package detectordeadlock;
 
