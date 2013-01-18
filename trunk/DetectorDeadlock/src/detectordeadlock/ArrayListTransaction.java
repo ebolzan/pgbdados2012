@@ -47,7 +47,7 @@ public class ArrayListTransaction
         int cont = 0;          
         Iterator<Transaction> itr = arraylist.iterator();
         
-        while(itr.hasNext() && cont < limit)
+        while(itr.hasNext() && cont <= limit)
         {
             Transaction t = itr.next();            
             
@@ -91,7 +91,10 @@ public class ArrayListTransaction
                     id = 2;
                     
                     if(function != null)
-                       this.t2 = haveDeadlock(id, function, data, cont); 
+                    {
+                        if(haveDeadlock(id, function, data, cont))
+                            this.t2 = true;
+                    }                       
                     
                     //test
                      if(this.t1==true && this.t2==true)
@@ -103,7 +106,11 @@ public class ArrayListTransaction
                     id = 1;       
                     
                     if(function != null)
-                      this.t1 = haveDeadlock( id, function, data, cont);
+                    {
+                         if(haveDeadlock( id, function, data, cont))
+                         this.t1 = true;
+                    }
+                      
                     
                     if(this.t1==true && this.t2==true)
                        JOptionPane.showMessageDialog(null, "Ocorreu deadlock");
