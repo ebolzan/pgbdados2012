@@ -26,10 +26,10 @@ public class Transaction {
         this.data = data;
         this.function = function;
         
-        System.out.println("id "+id);        
-        System.out.println("function "+function);        
-        System.out.println("dado "+data);        
-        System.out.print("\n\n");        
+//        System.out.println("id "+id);        
+//        System.out.println("function "+function);        
+//        System.out.println("dado "+data);        
+//        System.out.print("\n\n");        
     }
 
     public String getData() {
