@@ -165,11 +165,13 @@ public class NewJFrame extends javax.swing.JFrame {
                 {
                     contT2++;
                 }
-                    
+                  
+                arraylist.checkTransaction();
             }
             else
             {
                 //finished input data and calculation
+                //arraylist.checkTransaction();
             
             }
         }
