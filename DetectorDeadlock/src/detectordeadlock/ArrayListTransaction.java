@@ -40,6 +40,8 @@ public class ArrayListTransaction
     //check input data before timestant
     public boolean haveDeadlock(int id, String function, String data, int limit) 
     {
+       
+        
         //mostrando resultados
         System.out.println("Buscando por "+id +" function "+function+""
                 + " data " +data+ " limit "+ limit);
@@ -51,10 +53,13 @@ public class ArrayListTransaction
         {
             Transaction t = itr.next();            
             
+            
+            
             //check if have deadlock
-            if(id == t.getId() && t.getFunction().equals(function) && 
+            if(id == t.getId() && t.getFunction().toString().equals(function) &&
                     t.getData().equals(data))
             {
+                System.out.println("retornando true\n");
                 return true;
             }            
             cont++;
