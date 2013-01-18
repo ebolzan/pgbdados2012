@@ -11,7 +11,8 @@ import javax.swing.JOptionPane;
  */
 public class NewJFrame extends javax.swing.JFrame {
 
-    private int cont;
+    private int contT1;
+    private int contT2;
     ArrayListTransaction arraylist;
     
     /**
@@ -20,9 +21,12 @@ public class NewJFrame extends javax.swing.JFrame {
     public NewJFrame() {
         arraylist = new ArrayListTransaction();
         
-        Transaction n = new Transaction(1, "a", Transaction.FUNCTIONS.LOCK_S);
+        //Transaction n = new Transaction(1, "a", Transaction.FUNCTIONS.LOCK_S);
         
-        this.cont = 0;  
+        //start counter with value 0
+        this.contT1 = 0;  
+        this.contT2 = 0;  
+        
         initComponents();
     }
 
@@ -113,15 +117,13 @@ public class NewJFrame extends javax.swing.JFrame {
         int resposta = JOptionPane.showConfirmDialog(null, "Deseja continuar?", null, JOptionPane.YES_NO_OPTION);
         System.out.print(resposta);                      
         
-        if(cont == 10)
+        if(contT1 == 10 || contT2 == 10)
         {
             JOptionPane.showMessageDialog(this, "Você não pode mais inserir entradas");
             //calling results calculation
         }
         else
-        {
-            System.out.println(cont);
-            cont++;
+        {            
             if(resposta == 0)
             {
                 //continuar a inserção                
@@ -151,9 +153,19 @@ public class NewJFrame extends javax.swing.JFrame {
                         break;                                                  
                 }                
                 
+                //insert transation in arraylist
                 arraylist.insert(t);
                 
-                System.out.println("id "+id+1+" dado "+c);                                               
+                //test if what cont(t1 or t2) increase
+                if(id == 0)                                              
+                {
+                    contT1++;
+                }
+                else if(id == 1)
+                {
+                    contT2++;
+                }
+                    
             }
             else
             {

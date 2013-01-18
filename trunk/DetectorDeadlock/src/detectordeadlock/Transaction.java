@@ -47,6 +47,12 @@ public class Transaction {
     public void setFunction(FUNCTIONS function) {
         this.function = function;
     }
+
+    public int getId() {
+        return id;
+    }
+    
+    
     
     
 }
