@@ -2,15 +2,16 @@
  * this file save all transactions put by user
  */
 package detectordeadlock;
-
 import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.text.html.HTMLDocument;
 
 /**
  *
  * @author evandro, Gabriel Marchesan, Gabriel Lunardi, Lucas Gudergues
  */
-public class ArrayListTransaction{
-    
+public class ArrayListTransaction
+{    
     boolean t1 = false;
     boolean t2 = false;
     
@@ -39,29 +40,42 @@ public class ArrayListTransaction{
     public boolean haveDeadlock(int id, String function, String data, int limit) 
     {
         int cont = 0;
-                
-        for(Transaction t1 : arraylist)
+        
+        
+   
+    //use hasNext() and next() methods of Iterator to iterate through the elements
+     
+      
+      Iterator<Transaction> itr = arraylist.iterator();
+        
+        while(itr.hasNext() && cont < limit)
         {
+            Transaction t = itr.next();            
+            
+            //check if have deadlock
+            if(id == t.getId() && t.getFunction().equals(function) && 
+                    t.getData().equals(data))
+            {
+                return true;
+            }
             
             cont++;
         }        
         return false;
     }
-    
-    
-    
+            
     //get deadlock
     public void checkTransaction()
     {
         int cont = 0;
         int id;
         String data;
-        String function;        
+        String function;  
+                
         for(Transaction t1 : arraylist)
         {
             if(cont != 0)
-            {
-                            
+            {                            
                 //data             
                     data = t1.getData();                
                 
@@ -87,15 +101,9 @@ public class ArrayListTransaction{
                     
                     if(function != null)
                     this.t1 = haveDeadlock( id, function, data, cont);
-                }
-                                                                    
-            }
-            
+                }                                                                    
+            }            
             cont++;
-        }
-        
-        
-    }
-    
-    
+        }                
+    }        
 }
