@@ -4,6 +4,7 @@
 package detectordeadlock;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import javax.swing.text.html.HTMLDocument;
 
 /**
@@ -39,14 +40,12 @@ public class ArrayListTransaction
     //check input data before timestant
     public boolean haveDeadlock(int id, String function, String data, int limit) 
     {
-        int cont = 0;
+        //mostrando resultados
+        System.out.println("esta procurando por "+id +" function "+function+""
+                + " data " +data+ " limit "+ limit);
         
-        
-   
-    //use hasNext() and next() methods of Iterator to iterate through the elements
-     
-      
-      Iterator<Transaction> itr = arraylist.iterator();
+        int cont = 0;          
+        Iterator<Transaction> itr = arraylist.iterator();
         
         while(itr.hasNext() && cont < limit)
         {
@@ -57,8 +56,7 @@ public class ArrayListTransaction
                     t.getData().equals(data))
             {
                 return true;
-            }
-            
+            }            
             cont++;
         }        
         return false;
@@ -77,7 +75,7 @@ public class ArrayListTransaction
             if(cont != 0)
             {                            
                 //data             
-                    data = t1.getData();                
+                data = t1.getData();                
                 
                 //function
                 if(t1.getFunction().equals(Transaction.FUNCTIONS.LOCK_S))
@@ -93,17 +91,38 @@ public class ArrayListTransaction
                     id = 2;
                     
                     if(function != null)
-                    this.t2 = haveDeadlock(id, function, data, cont); 
+                       this.t2 = haveDeadlock(id, function, data, cont); 
+                    
+                    //test
+                     if(this.t1==true && this.t2==true)
+                       JOptionPane.showMessageDialog(null, "Ocorreu deadlock");
+        
                 }                    
                 else
                 {
                     id = 1;       
                     
                     if(function != null)
-                    this.t1 = haveDeadlock( id, function, data, cont);
+                      this.t1 = haveDeadlock( id, function, data, cont);
+                    
+                    if(this.t1==true && this.t2==true)
+                       JOptionPane.showMessageDialog(null, "Ocorreu deadlock");
                 }                                                                    
             }            
             cont++;
         }                
-    }        
+    }    
+    
+    //to show 
+    public void showResult()
+    {
+        this.checkTransaction();
+        
+        if(t1==true && t2==true)
+            JOptionPane.showMessageDialog(null, "Ocorreu deadlock");
+        else
+            JOptionPane.showMessageDialog(null, "Não ocorreu deadlock");
+        
+    }
+    
 }
