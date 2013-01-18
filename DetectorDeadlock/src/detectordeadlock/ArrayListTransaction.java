@@ -41,7 +41,7 @@ public class ArrayListTransaction
     public boolean haveDeadlock(int id, String function, String data, int limit) 
     {
         //mostrando resultados
-        System.out.println("esta procurando por "+id +" function "+function+""
+        System.out.println("Buscando por "+id +" function "+function+""
                 + " data " +data+ " limit "+ limit);
         
         int cont = 0;          
@@ -92,6 +92,7 @@ public class ArrayListTransaction
                     
                     if(function != null)
                     {
+                        System.out.println("Linha de busca "+ cont);
                         if(haveDeadlock(id, function, data, cont))
                             this.t2 = true;
                     }                       
@@ -107,6 +108,7 @@ public class ArrayListTransaction
                     
                     if(function != null)
                     {
+                        System.out.println("Linha de busca "+ cont);
                          if(haveDeadlock( id, function, data, cont))
                          this.t1 = true;
                     }
