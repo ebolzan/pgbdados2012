@@ -8,9 +8,9 @@ import javax.swing.JOptionPane;
 import javax.swing.text.html.HTMLDocument;
 
 /**
- *
  * @author evandro, Gabriel Marchesan, Gabriel Lunardi, Lucas Gudergues
  */
+
 public class ArrayListTransaction
 {    
     boolean t1 = false;
@@ -39,10 +39,8 @@ public class ArrayListTransaction
     
     //check input data before timestant
     public boolean haveDeadlock(int id, String function, String data, int limit) 
-    {
-       
-        
-        //mostrando resultados
+    {               
+        //show results
         System.out.println("Buscando por "+id +" function "+function+""
                 + " data " +data+ " limit "+ limit);
         
@@ -52,9 +50,7 @@ public class ArrayListTransaction
         while(itr.hasNext() && cont <= limit)
         {
             Transaction t = itr.next();            
-            
-            
-            
+                                    
             //check if have deadlock
             if(id == t.getId() && t.getFunction().toString().equals(function) &&
                     t.getData().equals(data))
@@ -78,19 +74,16 @@ public class ArrayListTransaction
         for(Transaction t1 : arraylist)
         {
             if(cont != 0)
-            {                            
-                //data             
+            {                                                         
                 data = t1.getData();                
-                
-                //function
+                                
                 if(t1.getFunction().equals(Transaction.FUNCTIONS.LOCK_S))
                     function = "LOCK_X";
                 else if((t1.getFunction().equals(Transaction.FUNCTIONS.LOCK_X)))
                     function = "LOCK_S";
                 else
                     function = null;
-                                          
-                 //veri
+                                                          
                 if(t1.getId() == 1)
                 {
                     id = 2;
@@ -100,12 +93,7 @@ public class ArrayListTransaction
                         System.out.println("Linha de busca "+ cont);
                         if(haveDeadlock(id, function, data, cont))
                             this.t2 = true;
-                    }                       
-                    
-                    //test
-                     if(this.t1==true && this.t2==true)
-                       JOptionPane.showMessageDialog(null, "Ocorreu deadlock");
-        
+                    }                                                                                 
                 }                    
                 else
                 {
@@ -116,11 +104,7 @@ public class ArrayListTransaction
                         System.out.println("Linha de busca "+ cont);
                          if(haveDeadlock( id, function, data, cont))
                          this.t1 = true;
-                    }
-                      
-                    
-                    if(this.t1==true && this.t2==true)
-                       JOptionPane.showMessageDialog(null, "Ocorreu deadlock");
+                    }                                      
                 }                                                                    
             }            
             cont++;
@@ -135,8 +119,6 @@ public class ArrayListTransaction
         if(t1==true && t2==true)
             JOptionPane.showMessageDialog(null, "Ocorreu deadlock");
         else
-            JOptionPane.showMessageDialog(null, "Não ocorreu deadlock");
-        
-    }
-    
+            JOptionPane.showMessageDialog(null, "Não ocorreu deadlock");        
+    }    
 }
