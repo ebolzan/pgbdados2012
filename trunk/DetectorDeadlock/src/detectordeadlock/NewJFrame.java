@@ -6,13 +6,15 @@ package detectordeadlock;
 import javax.swing.JOptionPane;
 
 /**
- *
  * @author evandro
  */
+
 public class NewJFrame extends javax.swing.JFrame {
 
+    //two atributes create to count values data input
     private int contT1;
     private int contT2;
+    
     ArrayListTransaction arraylist;
     
     /**
@@ -20,16 +22,14 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         arraylist = new ArrayListTransaction();
-        
-        //Transaction n = new Transaction(1, "a", Transaction.FUNCTIONS.LOCK_S);
-        
+                
         //start counter with value 0
         this.contT1 = 0;  
         this.contT2 = 0;  
         
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,7 +116,8 @@ public class NewJFrame extends javax.swing.JFrame {
         
         int resposta = JOptionPane.showConfirmDialog(null, "Deseja continuar?", null, JOptionPane.YES_NO_OPTION);
         System.out.print(resposta);                      
-        
+    
+        //check if t1 or t1 are at limit
         if(contT1 == 10 || contT2 == 10)
         {
             JOptionPane.showMessageDialog(this, "Você não pode mais inserir entradas");
@@ -135,6 +136,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 
                 Transaction t = null;
                 
+                //choice what FUNCTION to create
                 switch(function)
                 {
                     case 0 : t = new Transaction(id, c, Transaction.FUNCTIONS.LOCK_S);
@@ -158,26 +160,16 @@ public class NewJFrame extends javax.swing.JFrame {
                 
                 //test if what cont(t1 or t2) increase
                 if(id == 0)                                              
-                {
                     contT1++;
-                }
                 else if(id == 1)
-                {
-                    contT2++;
-                }
-                                
+                    contT2++;                 
             }
             else
             {
                 //finished input data and calculation
-                arraylist.showResult();
-            
+                arraylist.showResult();            
             }
-        }
-        
-        
-        //todo: set all fields as dafault
-        
+        }                            
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
