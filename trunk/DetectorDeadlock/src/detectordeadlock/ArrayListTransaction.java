@@ -53,6 +53,8 @@ public class ArrayListTransaction
             line2   = aux;                        
         }
         
+        System.out.println("line1 "+line1+ " line2 "+line2);
+        
         int i;        
         for(i=line1; i<line2; i++)
         {            
@@ -61,7 +63,7 @@ public class ArrayListTransaction
                 Transaction t = getTransaction(i);
                 
                 //if have unlock return true
-                if(t.getFunction().UNLOCK.toString().equals("UNLOCK"))
+                if(t.getFunction().toString().equals("UNLOCK"))
                     return true;
             }
             catch(IndexOutOfBoundsException e)
@@ -76,7 +78,7 @@ public class ArrayListTransaction
     
     
     //check input data before timestant
-    public boolean haveDeadlock(int id, String function, String data, int limit) 
+    public boolean haveDeadlock(int id, String function, String data, int limit, int flag) 
     {               
         //show results
         System.out.println("Buscando por "+id +" function "+function+""
@@ -93,6 +95,11 @@ public class ArrayListTransaction
             if(id == t.getId() && t.getFunction().toString().equals(function) &&
                     t.getData().equals(data))
             {
+                if(flag==1)
+                    this.line1 = cont;
+                else if(flag==2)
+                    this.line2 = cont;
+                
                 System.out.println("retornando true\n");
                 return true;
             }            
@@ -129,10 +136,9 @@ public class ArrayListTransaction
                     if(function != null)
                     {
                         System.out.println("Linha de busca "+ cont);
-                        if(haveDeadlock(id, function, data, cont))
+                        if(haveDeadlock(id, function, data, cont, 2))
                         {
                             this.t2    = true;
-                            this.line2 = cont;
                         }                            
                     }                                                                                 
                 }                    
@@ -142,7 +148,7 @@ public class ArrayListTransaction
                     if(function != null)
                     {
                         System.out.println("Linha de busca "+ cont);
-                         if(haveDeadlock( id, function, data, cont))
+                         if(haveDeadlock( id, function, data, cont, 1))
                          {
                             this.t1    = true;
                             this.line1 = cont;
@@ -165,12 +171,12 @@ public class ArrayListTransaction
             //check if between t1 and t2 haven't unlock command
             if(haveUnlock())
             {
-                JOptionPane.showMessageDialog(null, "Não ocorreu deadlock");
+                JOptionPane.showMessageDialog(null, "Não ocorreu deadlock 1");
             }
             else
                 JOptionPane.showMessageDialog(null, "Ocorreu deadlock");
         }
         else
-            JOptionPane.showMessageDialog(null, "Não ocorreu deadlock");        
+            JOptionPane.showMessageDialog(null, "Não ocorreu deadlock 2");        
     }    
 }

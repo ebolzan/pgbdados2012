@@ -117,10 +117,13 @@ public class NewJFrame extends javax.swing.JFrame {
         int resposta = JOptionPane.showConfirmDialog(null, "Deseja continuar?", null, JOptionPane.YES_NO_OPTION);
         System.out.print(resposta);                      
     
+         System.out.println("cont t1 "+ contT1 +" cont t2 "+ contT2);
         //check if t1 or t1 are at limit
         if(contT1 == 10 || contT2 == 10)
         {
             JOptionPane.showMessageDialog(this, "Você não pode mais inserir entradas");
+            arraylist.showResult();
+            jButton1.setEnabled(false);
             //calling results calculation
         }
         else
@@ -129,7 +132,7 @@ public class NewJFrame extends javax.swing.JFrame {
             {
                 //continuar a inserção                
                 int id = jComboBox1.getSelectedIndex() + 1;
-                
+               
                 String c = jComboBox3.getSelectedItem().toString(); 
                 
                 int function = jComboBox2.getSelectedIndex();
@@ -159,10 +162,12 @@ public class NewJFrame extends javax.swing.JFrame {
                 arraylist.insert(t);
                 
                 //test if what cont(t1 or t2) increase
-                if(id == 0)                                              
+                if(id == 1)                                              
                     contT1++;
-                else if(id == 1)
-                    contT2++;                 
+                else if(id == 2)
+                    contT2++;   
+                
+               
             }
             else
             {
