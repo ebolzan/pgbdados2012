@@ -173,10 +173,32 @@ public class ArrayListTransaction
             {
                 JOptionPane.showMessageDialog(null, "Não ocorreu deadlock 1");
             }
-            else
+            else {
                 JOptionPane.showMessageDialog(null, "Ocorreu deadlock");
+                new Desfazer(this).setVisible(true);
+            }
+                
         }
         else
             JOptionPane.showMessageDialog(null, "Não ocorreu deadlock 2");        
-    }    
+    }
+    
+    // choice - qual transacao sera desfeita - 1 serah a T1 e 2 serah a T2 (na interface)
+    public String rollBackTransaction (int choice) {
+        
+        String str = ""; 
+        int tam = arraylist.size();
+        for (int i = 1; i <= tam; i++){
+            Transaction t = getTransaction(tam - i);
+            if (t.getId() == choice){ //entao dados da T1
+                str+=(t.getFunction().toString());
+                str+=" (";
+                str+=t.getData();
+                str+=") ";
+                str+="\n";
+            }            
+        }
+        return str;
+        
+    }
 }
