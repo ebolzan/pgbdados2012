@@ -87,11 +87,13 @@ public class Desfazer extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO rollback T1
         jTextArea1.append(a.rollBackTransaction(1));
+        jButton2.disable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO rollback T2
-       jTextArea1.append(a.rollBackTransaction(2));      
+       jTextArea1.append(a.rollBackTransaction(2));  
+       jButton1.disable();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

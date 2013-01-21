@@ -28,8 +28,9 @@ public class NewJFrame extends javax.swing.JFrame {
         this.contT2 = 0;  
         
         initComponents();
+        jButton3.disable();
+        
     }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,8 +53,18 @@ public class NewJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Simulador de DeadLock");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jButton2.setText("Limpar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados de uma transação"));
 
@@ -158,10 +169,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                 
-        
-    
-                             
-    
+        jButton3.enable();
          System.out.println("cont t1 "+ contT1 +" cont t2 "+ contT2);
         //check if t1 or t1 are at limit
         if(contT1 == 10 || contT2 == 10)
@@ -173,7 +181,6 @@ public class NewJFrame extends javax.swing.JFrame {
         }
         else
         {            
-    
                 //keep data entering                 
                 int id = jComboBox1.getSelectedIndex() + 1;
                
@@ -210,15 +217,23 @@ public class NewJFrame extends javax.swing.JFrame {
                     contT1++;
                 else if(id == 2)
                     contT2++;   
-                
-               
-
-        }                            
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         arraylist.showResult();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        arraylist.clearArrayTransaction();
+        JOptionPane.showMessageDialog(rootPane, "Transações Limpas. Agora você pode fazer uma nova simulação","Aviso", WIDTH);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+    }//GEN-LAST:event_formWindowOpened
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
