@@ -201,4 +201,8 @@ public class ArrayListTransaction
         return str;
         
     }
+    
+    public void clearArrayTransaction(){
+        arraylist.clear();
+    }
 }
