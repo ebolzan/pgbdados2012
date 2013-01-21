@@ -33,7 +33,7 @@ public class Desfazer extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("escolha a transação a ser desfeita");
 
         jButton1.setText("desfazer T1");
@@ -87,13 +87,13 @@ public class Desfazer extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO rollback T1
         jTextArea1.append(a.rollBackTransaction(1));
-        jButton2.disable();
+        jButton2.setEnabled(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO rollback T2
        jTextArea1.append(a.rollBackTransaction(2));  
-       jButton1.disable();
+       jButton1.setEnabled(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
