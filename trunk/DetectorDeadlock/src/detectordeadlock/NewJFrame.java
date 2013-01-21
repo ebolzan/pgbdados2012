@@ -84,9 +84,9 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
+                        .addGap(110, 110, 110)
                         .addComponent(jButton1)))
-                .addContainerGap(432, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,9 +103,9 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,7 +130,7 @@ public class NewJFrame extends javax.swing.JFrame {
         {            
             if(resposta == 0)
             {
-                //continuar a inserção                
+                //keep data entering                 
                 int id = jComboBox1.getSelectedIndex() + 1;
                
                 String c = jComboBox3.getSelectedItem().toString(); 
