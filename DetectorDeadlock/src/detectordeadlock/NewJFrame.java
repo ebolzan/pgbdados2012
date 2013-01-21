@@ -28,7 +28,7 @@ public class NewJFrame extends javax.swing.JFrame {
         this.contT2 = 0;  
         
         initComponents();
-        jButton3.disable();
+        jButton3.setEnabled(false);
         
     }
     /**
@@ -169,7 +169,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                 
-        jButton3.enable();
+        jButton3.setEnabled(true);
          System.out.println("cont t1 "+ contT1 +" cont t2 "+ contT2);
         //check if t1 or t1 are at limit
         if(contT1 == 10 || contT2 == 10)
@@ -229,6 +229,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         arraylist.clearArrayTransaction();
         JOptionPane.showMessageDialog(rootPane, "Transações Limpas. Agora você pode fazer uma nova simulação","Aviso", WIDTH);
+        jButton3.setEnabled(false);     
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
