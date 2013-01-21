@@ -4,8 +4,6 @@
  */
 package detectordeadlock;
 
-import sun.nio.cs.ArrayEncoder;
-
 /**
  *
  * @author Gabriel Lunardi
