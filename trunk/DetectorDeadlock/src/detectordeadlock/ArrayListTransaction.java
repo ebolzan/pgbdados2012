@@ -20,8 +20,12 @@ public class ArrayListTransaction
     //tt2[0] = a;
     //tt2[1] = b;
     
-    Integer[] tt1= new Integer[2];
-    Integer[] tt2= new Integer[2];           
+    private Integer[] tt1= new Integer[2];
+    private Integer[] tt2= new Integer[2];   
+    
+    //check if have lock_s and lock_x
+    private boolean mixedT1 = false;
+    private boolean mixedT2 = false;
         
     ArrayList<Transaction> arraylist;
 
@@ -38,12 +42,14 @@ public class ArrayListTransaction
     
    public boolean isDeadlock()
    {
-       if( tt1[0]==1 && tt1[1]==1 && tt2[0]==1 && tt2[1]==1)
-       {
-           System.out.print("Ocorreu deadlock -------\n\n");
-           return true;
-       }   
-       
+       if(mixedT1 && mixedT2)
+       {    
+            if( tt1[0]==1 && tt1[1]==1 && tt2[0]==1 && tt2[1]==1)
+            {
+                System.out.print("Ocorreu deadlock -------\n\n");
+                return true;
+            }   
+       }
        return false;
    }              
    
@@ -58,6 +64,10 @@ public class ArrayListTransaction
                    tt1[0]=1;
                    else
                    tt1[1]=1;    
+               
+               if(t.getFunction().toString().equals("LOCK_X"))
+                   mixedT1 = true;
+               
            }
            else if(t.getFunction().toString().equals("UNLOCK"))
            {
@@ -75,6 +85,9 @@ public class ArrayListTransaction
                    tt2[0]=1;
                    else
                    tt2[1]=1;
+               
+               if(t.getFunction().toString().equals("LOCK_X"))
+                   mixedT2 = true;
            }                      
            else if(t.getFunction().toString().equals("UNLOCK"))
            {

@@ -310,6 +310,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         arraylist.clearArrayTransaction();
+        this.contGeneral = 0;
+        
         JOptionPane.showMessageDialog(rootPane, "Transações Limpas. Agora você pode fazer uma nova simulação","Aviso", WIDTH);
         for (int i = 0; i < 10; i++){ //10 eh o tamanho fixo da tebela (numero magico rsrsrs)
             jTable2.setValueAt(" ", i, 0);
