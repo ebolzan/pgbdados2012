@@ -73,6 +73,7 @@ public class ArrayListTransaction
            {
                tt1[0]=0;                   
                tt1[1]=0;
+               mixedT1 = false;
            }
        }
        
@@ -93,6 +94,7 @@ public class ArrayListTransaction
            {
                tt2[0]=0;                   
                tt2[1]=0;
+               mixedT2 = false;
            }                          
        }              
    }
