@@ -164,7 +164,12 @@ public class ArrayListTransaction
                          }
                     }                                      
                 }                                                                    
-            }            
+            }  
+            
+            //if have dealock exit and to show
+            if(this.t1 == true && this.t2 == true)
+                return;
+            
             cont++;
         }                
     }    
