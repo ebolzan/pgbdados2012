@@ -6,7 +6,7 @@ package detectordeadlock;
 import javax.swing.JOptionPane;
 
 /**
- * @author evandro
+ * @author evandro, gabriel m, gabriel l, lucas d.
  */
 
 public class NewJFrame extends javax.swing.JFrame {
@@ -175,9 +175,9 @@ public class NewJFrame extends javax.swing.JFrame {
         if(contT1 == 10 || contT2 == 10)
         {
             JOptionPane.showMessageDialog(this, "Você não pode mais inserir entradas");
-            arraylist.showResult();
-            jButton1.setEnabled(false);
             //calling results calculation
+            arraylist.showResult();
+            jButton1.setEnabled(false);            
         }
         else
         {            
@@ -217,8 +217,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     contT1++;
                 else if(id == 2)
                     contT2++;   
-        }
-        
+        }        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -235,7 +234,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
     }//GEN-LAST:event_formWindowOpened
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
