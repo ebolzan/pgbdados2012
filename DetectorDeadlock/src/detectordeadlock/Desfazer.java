@@ -1,22 +1,18 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * view redo transaction, button and textarea
  */
 package detectordeadlock;
-
 /**
  *
- * @author Gabriel Lunardi
+ * @author Gabriel Lunardi, evandro, lucas, gabriel m.
  */
 public class Desfazer extends javax.swing.JFrame {
 
-    private ArrayListTransaction a; 
-    
+    private ArrayListTransaction a;     
     
     public Desfazer(ArrayListTransaction a) {
         initComponents();
-        this.a = a;
-        
+        this.a = a;        
     }
 
     /**

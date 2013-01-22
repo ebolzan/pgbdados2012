@@ -34,6 +34,18 @@ public class ArrayListTransaction
         arraylist.add(t);        
     }
     
+    //line1 is less variable
+    public void setLine1(int number)
+    {
+        line1 = number < line1 ? number : line1;
+    }
+    
+    //line2 is highest
+    public void setLine2(int number)
+    {
+        line2 = number > line2 ? number : line2; 
+    }
+    
     //return transaction element by index 
     public Transaction getTransaction(int index) throws  IndexOutOfBoundsException 
     {
@@ -45,7 +57,8 @@ public class ArrayListTransaction
     
     //check if have deadlock between line1 and line2
     public boolean haveUnlock()
-    {        
+    {    
+        //what is less line?
         if(line1 > line2)
         {
             int aux = line1;
@@ -60,8 +73,7 @@ public class ArrayListTransaction
         {            
             try
             {
-                Transaction t = getTransaction(i);
-                
+                Transaction t = getTransaction(i);                
                 //if have unlock return true
                 if(t.getFunction().toString().equals("UNLOCK"))
                     return true;
@@ -75,15 +87,13 @@ public class ArrayListTransaction
         //dont found unlock, return false
         return false;
     }
-    
-    
+        
     //check input data before timestant
-    public boolean haveDeadlock(int id, String function, String data, int limit, int flag) 
+    public boolean haveDeadlock(int id, String function, String data, int limit) 
     {               
         //show results
         System.out.println("Buscando por "+id +" function "+function+""
-                + " data " +data+ " limit "+ limit);
-        
+                + " data " +data+ " limit "+ limit);        
         int cont = 0;          
         Iterator<Transaction> itr = arraylist.iterator();
         
@@ -95,10 +105,9 @@ public class ArrayListTransaction
             if(id == t.getId() && t.getFunction().toString().equals(function) &&
                     t.getData().equals(data))
             {
-                if(flag==1)
-                    this.line1 = cont;
-                else if(flag==2)
-                    this.line2 = cont;
+               
+                    setLine1(cont);
+                
                 
                 System.out.println("retornando true\n");
                 return true;
@@ -131,14 +140,14 @@ public class ArrayListTransaction
                                                           
                 if(t1.getId() == 1)
                 {
-                    id = 2;
-                    
+                    id = 2;                    
                     if(function != null)
                     {
                         System.out.println("Linha de busca "+ cont);
-                        if(haveDeadlock(id, function, data, cont, 2))
+                        if(haveDeadlock(id, function, data, cont))
                         {
                             this.t2    = true;
+                            setLine2(cont);
                         }                            
                     }                                                                                 
                 }                    
@@ -148,10 +157,10 @@ public class ArrayListTransaction
                     if(function != null)
                     {
                         System.out.println("Linha de busca "+ cont);
-                         if(haveDeadlock( id, function, data, cont, 1))
+                         if(haveDeadlock( id, function, data, cont))
                          {
                             this.t1    = true;
-                            this.line1 = cont;
+                            setLine2(cont);
                          }
                     }                                      
                 }                                                                    
@@ -160,7 +169,7 @@ public class ArrayListTransaction
         }                
     }    
     
-    //to show 
+    //to show result all transactions
     public void showResult()
     {
         this.checkTransaction();
@@ -176,8 +185,7 @@ public class ArrayListTransaction
             else {
                 JOptionPane.showMessageDialog(null, "Ocorreu deadlock");
                 new Desfazer(this).setVisible(true);
-            }
-                
+            }                
         }
         else
             JOptionPane.showMessageDialog(null, "Não ocorreu deadlock 2");        
@@ -198,10 +206,10 @@ public class ArrayListTransaction
                 str+="\n";
             }            
         }
-        return str;
-        
+        return str;        
     }
     
+    //clear all values of arraylist
     public void clearArrayTransaction(){
         arraylist.clear();
     }

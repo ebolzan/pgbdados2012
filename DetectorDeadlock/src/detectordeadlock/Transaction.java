@@ -2,9 +2,8 @@
  * this class is responsible by transactions definitions
  */
 package detectordeadlock;
-
 /**
- * @author evandro
+ * @author evandro, lucas, gabriel m, gabriel l.
  */
  
 public class Transaction {
@@ -24,12 +23,7 @@ public class Transaction {
     {        
         this.id = id;
         this.data = data;
-        this.function = function;
-        
-//        System.out.println("id "+id);        
-//        System.out.println("function "+function);        
-//        System.out.println("dado "+data);        
-//        System.out.print("\n\n");        
+        this.function = function;              
     }
 
     public String getData() {
@@ -50,9 +44,5 @@ public class Transaction {
 
     public int getId() {
         return id;
-    }
-    
-    
-    
-    
+    }            
 }
