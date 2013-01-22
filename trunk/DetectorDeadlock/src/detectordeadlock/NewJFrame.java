@@ -15,6 +15,7 @@ public class NewJFrame extends javax.swing.JFrame {
     //two atributes create to count values data input
     private int contT1;
     private int contT2;
+    private int contGeneral;
     
     ArrayListTransaction arraylist;
     
@@ -25,8 +26,9 @@ public class NewJFrame extends javax.swing.JFrame {
         arraylist = new ArrayListTransaction();
                 
         //start counter with value 0
-        this.contT1 = 0;  
-        this.contT2 = 0;  
+        this.contT1      = 0;  
+        this.contT2      = 0;  
+        this.contGeneral = 0;
         
         initComponents();
         jButton3.setEnabled(false);
@@ -288,15 +290,16 @@ public class NewJFrame extends javax.swing.JFrame {
                 //test if what cont(t1 or t2) increase
                 if(id == 1){
                     String temp = t.getFunction() + " (" + t.getData() + ")";
-                    jTable2.setValueAt(temp, contT1, 0);
+                    jTable2.setValueAt(temp, contGeneral, 0);                                      
                     contT1++;
                 }                                                
                 else {
                     String temp = t.getFunction() + " (" + t.getData() + ")";
-                    jTable2.setValueAt(temp, contT2, 1);
+                    jTable2.setValueAt(temp, contGeneral, 1);                    
                     contT2++;
                 }
-                       
+                 
+                contGeneral++;
         }        
     }//GEN-LAST:event_jButton1ActionPerformed
 
